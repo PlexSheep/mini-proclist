@@ -10,7 +10,6 @@ a tiny list of os processes
 
 - [GitHub](https://github.com/PlexSheep/mini-proclist)
 - [crates.io](https://crates.io/crates/mini-proclist)
-- [docs.rs](https://docs.rs/crate/mini-proclist/)
 
 ## What?
 
