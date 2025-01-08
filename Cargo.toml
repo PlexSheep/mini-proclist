@@ -13,3 +13,7 @@ keywords = ["processes"]
 
 [dependencies]
 sysinfo = "0.33.1"
+
+[[bin]]
+name = "miniproc"
+path = "src/main.rs"
