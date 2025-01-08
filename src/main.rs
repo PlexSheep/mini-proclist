@@ -19,7 +19,9 @@ fn proclist(name: &str) {
 
     println!("{:<16}{:<10}{:<30}{:<40}", "UID", "PID", "NAME", "CMD");
 
-    for process in processes {
+    for process in processes.iter().filter(
+        |p| p.thread_kind().is_none(), /* I only want real processes, not just threads */
+    ) {
         println!(
             "{:<16}{:<10}{:<30}{:<40}",
             process
