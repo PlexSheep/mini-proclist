@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+## [0.1.2](https://github.com/PlexSheep/mini-proclist/compare/v0.1.1...v0.1.2) - 2025-01-08
+
+### Other
+
+- remove docs.rs link from readme (this is not a library)
+
 ## [0.1.1](https://github.com/PlexSheep/mini-proclist/compare/v0.1.0...v0.1.1) - 2025-01-08
 
 ### Added
