@@ -25,11 +25,11 @@ fn proclist(name: &str) {
                 .map(|a| a.to_string())
                 .unwrap_or("(bad id)".to_string()),
             process.pid().to_string(),
-            process.name().to_str().unwrap_or("(bad text)"),
+            process.name().to_string_lossy(),
             process
                 .cmd()
                 .iter()
-                .map(|a| a.to_str().unwrap_or("(bad text)"))
+                .map(|a| a.to_string_lossy())
                 .collect::<Vec<_>>()
                 .join(" ")
         );
