@@ -4,24 +4,31 @@ use sysinfo::{ProcessRefreshKind, RefreshKind, System};
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    if args.len() != 2 {
+    if args.len() > 2 {
         usage(&args[0]);
     }
-    proclist(&args[1]);
+    proclist(args.get(1).map(|a| a.as_str()));
 }
 
-fn proclist(name: &str) {
+fn proclist(name: Option<&str>) {
     let s = System::new_with_specifics(
         RefreshKind::nothing().with_processes(ProcessRefreshKind::everything()),
     );
-    let mut processes: Vec<&sysinfo::Process> = s.processes_by_name(name.as_ref()).collect();
+    let mut processes: Vec<&sysinfo::Process> = if let Some(name) = name {
+        s.processes_by_name(name.as_ref()).collect::<Vec<_>>()
+    } else {
+        s.processes().values().collect::<Vec<_>>()
+    }
+    .into_iter()
+    .filter(
+        |p| p.thread_kind().is_none(), /* I only want real processes, not just threads */
+    )
+    .collect();
     processes.sort_by_key(|a| a.pid());
 
     println!("{:<16}{:<10}{:<30}{:<40}", "UID", "PID", "NAME", "CMD");
 
-    for process in processes.iter().filter(
-        |p| p.thread_kind().is_none(), /* I only want real processes, not just threads */
-    ) {
+    for process in processes {
         println!(
             "{:<16}{:<10}{:<30}{:<40}",
             process
