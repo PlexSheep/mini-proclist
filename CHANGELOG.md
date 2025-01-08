@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+## [0.1.1](https://github.com/PlexSheep/mini-proclist/compare/v0.1.0...v0.1.1) - 2025-01-08
+
+### Added
+
+- print all processes if no arg is given
+
+### Other
+
+- generate changelog
+- add git cliff config
+
 ### ⚙️ Miscellaneous Tasks
 
 - Add git cliff config
