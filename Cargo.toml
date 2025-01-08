@@ -2,14 +2,15 @@
 name = "mini-proclist"
 version = "0.1.0"
 edition = "2021"
-publish = false
+publish = true
 authors = ["Christoph J. Scherr <software@cscherr.de>"]
 license = "GPL-3.0-or-later"
 description = "a tiny list of os processes"
 readme = "README.md"
 homepage = "https://github.com/PlexSheep/mini-proclist"
 repository = "https://github.com/PlexSheep/mini-proclist"
-keywords = ["processes"]
+keywords = ["process", "cli", "top"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 sysinfo = "0.33.1"
