@@ -1,6 +1,6 @@
 use std::process::exit;
 
-use sysinfo::System;
+use sysinfo::{ProcessRefreshKind, RefreshKind, System};
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
@@ -11,7 +11,9 @@ fn main() {
 }
 
 fn proclist(name: &str) {
-    let s = System::new_all();
+    let s = System::new_with_specifics(
+        RefreshKind::nothing().with_processes(ProcessRefreshKind::everything()),
+    );
     let mut processes: Vec<&sysinfo::Process> = s.processes_by_name(name.as_ref()).collect();
     processes.sort_by_key(|a| a.pid());
 
